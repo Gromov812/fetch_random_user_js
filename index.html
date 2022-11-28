@@ -85,6 +85,7 @@
             result.rank = Math.floor(Math.random() * (200 - 1)) + 1;
             result.id =  Math.floor(Math.random() * (12 - 1)) + 1;
             return result;
+
         }
 
 
@@ -94,8 +95,8 @@
             return user;
         }
          
-function loadUsers(){
-        getSomeUser(getRandomData().id).then(res => {
+        function loadUsers(){
+          getSomeUser(getRandomData().id).then(res => {
             console.log(res.data);
             document.querySelector('#avatar').innerHTML = `<img src =\"${res.data.avatar}\" alt=\"${res.data.first_name} ${res.data.last_name}\" class=\"rounded-circle\" width=\"80\">`;
             document.querySelector('#name').innerHTML = `${res.data.first_name} ${res.data.last_name}`;
@@ -107,13 +108,8 @@ function loadUsers(){
             console.log(err);
         })
     }
-document.querySelector('#reload').onclick = function(e) {
-
-    e.preventDefault();
-    loadUsers();
     
-}
-
+document.querySelector('#reload').addEventListener('click', loadUsers);
 
     </script>
 </body>
